@@ -1,0 +1,7 @@
+services:
+  app:
+    image: petarmc/package-json-analyzer:latest
+    container_name: package-json-analyzer
+    ports:
+      - "8080:80"
+    restart: unless-stopped

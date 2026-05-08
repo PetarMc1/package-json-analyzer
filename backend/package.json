@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "npm-package-arg": "^12.0.2",
+    "semver": "^7.6.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/multer": "^1.4.11",
+    "@types/npm-package-arg": "^6.1.4",
+    "@types/node": "^20.14.9",
+    "@types/semver": "^7.5.8",
+    "tsx": "^4.16.2",
+    "typescript": "^5.4.5"
+  }
+}
