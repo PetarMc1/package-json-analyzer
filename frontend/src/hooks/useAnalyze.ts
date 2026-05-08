@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { AnalysisResult } from '../types';
+import { apiUrl } from '../api';
 
 interface AnalyzeState {
   result: AnalysisResult | null;
@@ -32,7 +33,7 @@ export function useAnalyze(): UseAnalyze {
   const [state, setState] = useState<AnalyzeState>(IDLE);
 
   async function fetchRemoteContent(payload: Record<string, unknown>): Promise<string> {
-    const res = await fetch('/api/fetch-package-json', {
+    const res = await fetch(apiUrl('fetch-package-json'), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -53,7 +54,7 @@ export function useAnalyze(): UseAnalyze {
   async function runFetch(init: RequestInit): Promise<void> {
     setState({ result: null, error: null, loading: true });
     try {
-      const res = await fetch('/api/analyze', init);
+      const res = await fetch(apiUrl('analyze'), init);
       const body = await parseResponseBody(res);
       if (!res.ok) {
         setState({ result: null, error: body && 'error' in body ? body.error ?? 'Analysis failed.' : 'Analysis failed.', loading: false });

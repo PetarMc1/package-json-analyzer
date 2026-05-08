@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { InputCard } from './components/InputCard';
 import { Dashboard } from './components/dashboard/Dashboard';
 import { useAnalyze } from './hooks/useAnalyze';
+import { apiUrl } from './api';
 
 type Route = '/' | '/about';
 type HealthStatus = 'checking' | 'ok' | 'unreachable';
@@ -32,7 +33,7 @@ export default function App() {
     async function checkHealth() {
       setHealthStatus('checking');
       try {
-        const response = await fetch('/api/health');
+        const response = await fetch(apiUrl('health'));
         if (!cancelled) {
           setHealthStatus(response.ok ? 'ok' : 'unreachable');
         }
