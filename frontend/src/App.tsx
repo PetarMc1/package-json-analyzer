@@ -67,36 +67,24 @@ export default function App() {
           <a
             className={`top-nav_link${route === '/' ? ' top-nav_link-active' : ''}`}
             href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              setRoute('/');
-            }}
           >
             Analyzer
           </a>
           <a
             className={`top-nav_link${route === '/about' ? ' top-nav_link-active' : ''}`}
             href="/about"
-            onClick={(e) => {
-              e.preventDefault();
-              setRoute('/about');
-            }}
           >
             About
           </a>
           <a
             className="top-nav_link"
-            href="https://tools.petarmc.com/terms/package-json-analyzer"
-            target="_blank"
-            rel="noreferrer"
+            href="/terms/package-json-analyzer"
           >
             Terms
           </a>
           <a
             className="top-nav_link"
-            href="https://tools.petarmc.com/api-docs"
-            target="_blank"
-            rel="noreferrer"
+            href="/api-docs"
           >
             API Docs
           </a>
