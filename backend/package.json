@@ -10,7 +10,7 @@
   "dependencies": {
     "express": "^4.19.2",
     "multer": "^1.4.5-lts.1",
-    "npm-package-arg": "^12.0.2",
+    "npm-package-arg": "^14.0.0",
     "semver": "^7.6.3"
   },
   "devDependencies": {
