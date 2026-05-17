@@ -22,7 +22,7 @@ export function InputCard({
   const [file, setFile] = useState<File | null>(null);
   const [repo, setRepo] = useState('');
   const [repoRef, setRepoRef] = useState('');
-  const [repoPath, setRepoPath] = useState('package.json');
+  const [repoPath, setRepoPath] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const [dragging, setDragging] = useState(false);
@@ -185,7 +185,7 @@ export function InputCard({
                 <input
                   id="repo-path"
                   className="input"
-                  placeholder="package.json"
+                  placeholder="/frontend"
                   value={repoPath}
                   onChange={(e) => setRepoPath(e.target.value)}
                 />

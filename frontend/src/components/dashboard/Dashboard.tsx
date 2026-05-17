@@ -1,4 +1,5 @@
 import { useDeferredValue, useMemo, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import type {
   AnalysisResult,
   DependencyGroup,
@@ -193,6 +194,10 @@ export function Dashboard({ result, onReset }: Props) {
 
   return (
     <div className="dashboard">
+      <Helmet>
+        <title>{result.name ? `${result.name} | Package.json Analyzer` : 'Analysis | Package.json Analyzer'}</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="dashboard-toolbar">
         <button className="btn btn--ghost btn--sm" onClick={onReset} type="button">
           ← New analysis

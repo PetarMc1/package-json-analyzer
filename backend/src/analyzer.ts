@@ -845,9 +845,13 @@ function sanitizeSegment(value: string): string {
 }
 
 function normalizePackagePath(value: string): string {
-  const cleaned = value.trim().replace(/^\/+/, '').replace(/\/+/g, '/');
+  const cleaned = value.trim().replace(/^\/+/, '').replace(/\/+/, '/');
   if (!cleaned) {
     return 'package.json';
+  }
+
+  if (!cleaned.toLowerCase().endsWith('.json')) {
+    return `${cleaned.replace(/\/$/, '')}/package.json`;
   }
 
   return cleaned;

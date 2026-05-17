@@ -3,6 +3,7 @@ import { InputCard } from './components/InputCard';
 import { Dashboard } from './components/dashboard/Dashboard';
 import { useAnalyze } from './hooks/useAnalyze';
 import { apiUrl } from './api';
+import { Helmet } from 'react-helmet-async';
 
 type Route = '/' | '/about';
 type HealthStatus = 'checking' | 'ok' | 'unreachable';
@@ -54,6 +55,22 @@ export default function App() {
   const currentYear = useMemo(() => new Date().getFullYear(), []);
 
   return (
+    <>
+    <Helmet>
+      <meta property="og:type" content="website"/>
+      <meta name="twitter:card" content="summary"/>
+      <title>Package.json Analyzer | Inspect Dependencies, Scripts & Issues Online</title>
+      <meta name="pagename" content="Package.json Analyzer - Inspect Dependencies, Scripts & Issues Online"/>
+      <meta property="og:title" content="Package.json Analyzer - Inspect Dependencies, Scripts & Issues Online"/>
+      <meta name="twitter:title" content="Package.json Analyzer - Inspect Dependencies, Scripts & Issues Online"/>
+      <meta name="description" content="Analyze your package.json file instantly in your browser. Package.json Analyzer inspects scripts, dependencies, devDependencies, and potential issues to help you understand and improve your project. No data is sent to any server - everything runs locally for full privacy. You can paste a package.json, upload a file, fetch from a URL, or connect a GitHub repository."/>
+      <meta property="og:description" content="Analyze your package.json file instantly in your browser. Package.json Analyzer inspects scripts, dependencies, devDependencies, and potential issues to help you understand and improve your project. No data is sent to any server - everything runs locally for full privacy. You can paste a package.json, upload a file, fetch from a URL, or connect a GitHub repository."/>
+      <meta name="twitter:description" content="Analyze your package.json file instantly in your browser. Package.json Analyzer inspects scripts, dependencies, devDependencies, and potential issues to help you understand and improve your project. No data is sent to any server - everything runs locally for full privacy. You can paste a package.json, upload a file, fetch from a URL, or connect a GitHub repository."/>
+      <meta name="keywords" content="package.json analyzer, npm dependency checker, node.js tools, package.json inspector, dependency analyzer, npm scripts viewer, dev dependencies checker, node project analyzer, frontend developer tools, backend developer tools, JavaScript tools, Node.js package analyzer, local package.json viewer, GitHub package.json analyzer, browser-based tools, no server processing, privacy tools, npm audit alternative"/>
+      <meta name="news_keywords" content="package.json analyzer, npm dependency checker, node.js tools, package.json inspector, dependency analyzer, npm scripts viewer, dev dependencies checker, node project analyzer, frontend developer tools, backend developer tools, JavaScript tools, Node.js package analyzer, local package.json viewer, GitHub package.json analyzer, browser-based tools, no server processing, privacy tools, npm audit alternative"/>
+      <meta property="og:site_name" content="Package.json Analyzer - Inspect Dependencies & Scripts"/>
+      <meta name="robots" content="index, follow" />
+    </Helmet>
     <div className="app">
       <header className="app-header">
         <div className="header-top">
@@ -67,12 +84,20 @@ export default function App() {
           <a
             className={`top-nav_link${route === '/' ? ' top-nav_link-active' : ''}`}
             href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              setRoute('/');
+            }}
           >
             Analyzer
           </a>
           <a
             className={`top-nav_link${route === '/about' ? ' top-nav_link-active' : ''}`}
             href="/about"
+            onClick={(e) => {
+              e.preventDefault();
+              setRoute('/about');
+            }}
           >
             About
           </a>
@@ -93,6 +118,11 @@ export default function App() {
 
       <main className="app-main">
         {route === '/about' ? (
+          <>
+          <Helmet>
+            <title>Package.json Analyzer | About</title>
+          </Helmet>
+
           <section className="card static-page">
             <h2 className="static-page_title">About</h2>
             <p>
@@ -102,11 +132,19 @@ export default function App() {
               You can analyze a <code>package.json</code> by pasting its content, uploading a file, fetching from a URL, 
               or connecting to a GitHub repository.
             </p>
+              <Helmet>
+                <title>Package.json Analyzer | About</title>
+                <meta name="robots" content="noindex, nofollow" />
+              </Helmet>
           </section>
+          </>
         ) : result ? (
           <Dashboard result={result} onReset={reset} />
         ) : (
           <>
+          <Helmet>
+            <meta name="robots" content="noindex, nofollow" />
+          </Helmet>
             <InputCard
               loading={loading}
               onAnalyzeText={analyzeText}
@@ -152,5 +190,6 @@ export default function App() {
         </p>
       </footer>
     </div>
+    </>
   );
 }
