@@ -17,7 +17,7 @@
     "@types/express": "^4.17.21",
     "@types/multer": "^1.4.11",
     "@types/npm-package-arg": "^6.1.4",
-    "@types/node": "^20.14.9",
+    "@types/node": "^25.8.0",
     "@types/semver": "^7.5.8",
     "tsx": "^4.16.2",
     "typescript": "^5.4.5"
